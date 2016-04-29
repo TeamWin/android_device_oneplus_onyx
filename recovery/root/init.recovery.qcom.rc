@@ -30,14 +30,18 @@ on boot
     write /sys/devices/system/cpu/cpufreq/blu_active/low_load_down_threshold 5
 	write /sys/devices/system/cpu/cpufreq/blu_active/fastlane 1
 	
-    write /sys/block/mmcblk0/queue/scheduler fiops
-    write /sys/block/mmcblk0/bdi/read_ahead_kb 512
-    write /sys/block/mmcblk1/queue/scheduler fiops
-    write /sys/block/mmcblk1/bdi/read_ahead_kb 512
+    write /sys/class/devfreq/qcom,cpubw.41/governor "cpubw_hwmon"
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor "msm-adreno-tz"
+    write /dev/cpuctl/cpu.notify_on_migrate 1
 	
     write /sys/module/blu_plug/parameters/max_online 4
     write /sys/module/blu_plug/parameters/min_online 4
     write /sys/module/blu_plug/parameters/max_cores_screenoff 4
+	
+    write /sys/block/mmcblk0/queue/scheduler fiops
+    write /sys/block/mmcblk0/bdi/read_ahead_kb 512
+    write /sys/block/mmcblk1/queue/scheduler fiops
+    write /sys/block/mmcblk1/bdi/read_ahead_kb 512
 	
 	write /proc/touchpanel/double_tap_enable 1
 	write /sys/class/leds/red/trigger "battery-charging"
