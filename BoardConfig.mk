@@ -25,7 +25,7 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0
 
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/oneplus/onyx/dt.img
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 
 # prebuilt kernel
 TARGET_PREBUILT_KERNEL := device/oneplus/onyx/kernel
@@ -56,3 +56,6 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_EXTRA_LANGUAGES := true
 BOARD_CUSTOM_BOOTIMG_MK := device/oneplus/onyx/custombootimg.mk
+
+# Assertions
+TARGET_BOARD_INFO_FILE ?= device/oneplus/onyx/board-info.txt
